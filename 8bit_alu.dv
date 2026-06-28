@@ -1,0 +1,27 @@
+module alu_8bit (
+  
+    input  logic [7:0] src_a,       
+    input  logic [7:0] src_b,       
+    input  logic [1:0] alu_op,      
+    output logic [7:0] alu_out,     
+    output logic       carry_out    
+);
+
+    always_comb
+      begin
+        
+        alu_out   = 8'h00;
+        carry_out = 1'b0;
+
+        case (alu_op)
+            2'b00: {carry_out, alu_out} = src_a + src_b;  
+            2'b01: alu_out = src_a - src_b;              
+            2'b10: alu_out = src_a & src_b;              
+            2'b11: alu_out = src_a ^ src_b;
+          
+            default: alu_out = 8'h00;
+        endcase
+        
+    end
+
+endmodule
