@@ -19,6 +19,10 @@ module testbench;
   initial
     begin
       
+      $dumpfile("alu_8bit.vcd");
+      $dumpvars(0,testbench);
+      
+      
       $monitor("Time =%0t sec; src_a =%0d;src_b =%0d;test_alu_op =%0d;test_alu_out =%0d;test_carry_out =%0d",$time,test_src_a,test_src_b,test_alu_op,test_alu_out,test_carry_out);
       
       test_alu_op = A;
