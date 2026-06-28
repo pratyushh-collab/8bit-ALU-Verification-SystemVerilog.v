@@ -1,0 +1,46 @@
+module testbench;
+  logic [7:0] test_src_a,test_src_b;
+  logic [1:0]test_alu_op;
+  logic [7:0]test_alu_out;
+  logic test_carry_out;
+  
+  parameter A = 2'b00,
+  B =2'b01,
+  C =2'b10,
+  D =2'b11;
+  
+  alu_8bit DUT(.src_a     (test_src_a),
+               .src_b     (test_src_b),
+               .alu_op    (test_alu_op),
+               .alu_out   (test_alu_out),
+               .carry_out (test_carry_out)
+              );
+  
+  initial
+    begin
+      
+      $monitor("Time =%0t sec; src_a =%0d;src_b =%0d;test_alu_op =%0d;test_alu_out =%0d;test_carry_out =%0d",$time,test_src_a,test_src_b,test_alu_op,test_alu_out,test_carry_out);
+      
+      test_alu_op = A;
+      test_src_a =8'b11011001;
+      test_src_b =8'b11011001;
+      #5;
+      
+      test_alu_op = B;
+      test_src_a =8'b11011001;
+      test_src_b =8'b11011001;
+      #5;
+      
+      test_alu_op = C;
+      test_src_a =8'b11011001;
+      test_src_b =8'b11011001;
+      #5;
+      
+      test_alu_op = D;
+      test_src_a =8'b11011001;
+      test_src_b =8'b11011001;
+      #5;
+      $finish;
+      
+    end
+endmodule
